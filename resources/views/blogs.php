@@ -10,17 +10,13 @@
 
 <body>
 
-
     <div class="container">
-        <h1>My Awesome Blogs Website</h1>
+        <h1>All Blogs</h1>
 
-        <?php foreach ($blogs as $blog) : ?>
-            <?= $blog; ?>
-        <?php endforeach; ?>
-
-
+        <?php foreach ($blogs as $blog) :?>
+            <?= $blog ?>
+        <?php endforeach ;?>
     </div>
-
 
 </body>
 

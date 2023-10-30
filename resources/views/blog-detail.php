@@ -11,7 +11,8 @@
 <body>
 
     <div class="container">
-        <?= $blog; ?>
+
+            <?= $blog ?>
     </div>
 
 </body>
