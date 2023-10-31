@@ -12,11 +12,10 @@ Route::get("/", function () {
 });
 
 // "^[A-Za-z0-9-_]+$" => regex
-Route::get("/blogs/{filename}", function ($filename) {
-    // dd($filename);
+Route::get("/blogs/{slug}", function ($slug) {
 
     // find a blog
     return view('blog-detail', [
-        'blog' =>  Blog::find($filename)
+        'blog' =>  Blog::findOrFail($slug)
     ]);
 });

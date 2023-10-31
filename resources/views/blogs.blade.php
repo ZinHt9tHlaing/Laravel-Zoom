@@ -13,9 +13,14 @@
     <div class="container">
         <h1>All Blogs</h1>
 
-        <?php foreach ($blogs as $blog) :?>
-            <?= $blog ?>
-        <?php endforeach ;?>
+        @foreach ($blogs as $blog)
+            <div class="<?= $loop->even ? 'bg-green' : '' ?>">
+                <h1><a href="/blogs/{{ $blog->slug }}">
+                        {{ $blog->title }}
+                    </a></h1>
+                <p>{{ $blog->body }}/p>
+            </div>
+        @endforeach
     </div>
 
 </body>
