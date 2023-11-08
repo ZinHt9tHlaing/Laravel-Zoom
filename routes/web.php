@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('blogs', [
-        'blogs' => Blog::all()
+        // 'blogs' => Blog::all()
+        'blogs' => Blog::orderBy('title', 'desc')->get()
     ]);
 });
 
@@ -24,6 +25,18 @@ Route::get('/products', function () {
 });
 
 // product detail page
-Route::get('/products/{product}',function(Product $product){
+Route::get('/products/{product}', function (Product $product) {
     dd($product);
+});
+
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('blogs', [
+        'blogs' => $category->blogs
+    ]);
+});
+
+Route::get('/users/{user:username}', function (User $user) {
+    return view('blogs', [
+        'blogs' => $user->blogs
+    ]);
 });

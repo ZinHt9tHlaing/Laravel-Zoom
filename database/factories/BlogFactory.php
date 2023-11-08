@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,6 +22,8 @@ class BlogFactory extends Factory
             'title' => fake()->sentence(),
             'slug' => fake()->slug(),
             'body' => fake()->paragraph(),
+            'cat_id' => Category::factory()->create(), //obj
+            'user_id'=>User::factory()
         ];
     }
 }

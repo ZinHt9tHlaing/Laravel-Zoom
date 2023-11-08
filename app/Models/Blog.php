@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
+
+    // blogs categories
+
+    // a blog belongsTo a category
+
+    // a category hasMany blogs
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'cat_id');
+    }
+
+    public function author(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }
