@@ -1,4 +1,4 @@
-<x-layout>
+{{-- <x-layout>
     <div class="container">
         @foreach ($blogs as $blog)
             <h1><a href="/blogs/{{ $blog->slug }}">{{ $blog->title }}</a></h1>
@@ -7,4 +7,15 @@
             <p>User - <a href="/users/{{ $blog->author->username }}">{{ $blog->author->name }}</a></p>
         @endforeach
     </div>
+</x-layout> --}}
+
+<x-layout>
+    <!-- hero section -->
+    <x-hero></x-hero>
+
+    <!-- blogs section -->
+    <x-blogs-section :blogs="$blogs" />
+
+    <!-- subscribe new blogs -->
+    <x-subscribe></x-subscribe>
 </x-layout>

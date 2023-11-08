@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('blogs', [
         // 'blogs' => Blog::all()
-        'blogs' => Blog::orderBy('title', 'desc')->get()
+        'blogs' => Blog::latest()->get()
     ]);
 });
 
