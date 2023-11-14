@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -11,13 +12,14 @@ class BlogController extends Controller
     public function index()
     {
         // conditional query
-        $blogQuery = Blog::with('category', 'author')->latest();
-        if (request('search')) {
-            $blogQuery->where('title', 'like', '%' . request('search') . '%');
-        }
+        // $blogQuery = Blog::with('category', 'author')->filter(request('search'))->latest();
+
         return view('blogs.index', [
-            'blogs' => $blogQuery->paginate(3)->withQueryString(),
-            'categories'=> Category::all()
+            'blogs' => Blog::with('category', 'author')
+            ->filter(request('search'))
+            ->latest()
+            ->paginate(3)
+            ->withQueryString(),
         ]);
     }
 

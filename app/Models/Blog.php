@@ -20,7 +20,14 @@ class Blog extends Model
         return $this->belongsTo(Category::class, 'cat_id');
     }
 
-    public function author(){
-        return $this->belongsTo(User::class,'user_id');
+    public function scopeFilter($query,$searchValue){
+        if ($searchValue) {
+            $query->where('title', 'like', '%' . $searchValue . '%');
+        }
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

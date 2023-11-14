@@ -1,6 +1,7 @@
 <x-layout>
+    <x-category />
     <div class="container">
-        <x-categories />
+
         <div class="mb-5 w-25 m-auto">
             <form action="/" class="input-group d-flex shadow">
                 <input type="search" class="form-control me-1 border-2 border-info" width="50px" name="search"
@@ -8,6 +9,8 @@
                 <button type="submit" class="btn btn-primary">Search</button>
             </form>
         </div>
+
+        {{ $blogs->links() }}
 
         <x-hero />
 
@@ -21,8 +24,6 @@
                 <p class="text-danger fs-2 text-center my-5">No blogs found!</p>
             @endforelse
         </div>
-
-        {{ $blogs->links() }}
 
     </div>
 

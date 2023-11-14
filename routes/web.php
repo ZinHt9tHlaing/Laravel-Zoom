@@ -27,12 +27,11 @@ Route::get('/products/{product}', function (Product $product) {
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('blogs.index', [
         'blogs' => $category->blogs()->with('category', 'author')->paginate(),
-        'categories' => Category::all()
     ]);
 });
 
 Route::get('/users/{user:username}', function (User $user) {
     return view('blogs.index', [
-        'blogs' => $user->blogs->load('category', 'author')
+        'blogs' => $user->blogs()->with('category', 'author')->paginate()
     ]);
 });
