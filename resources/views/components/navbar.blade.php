@@ -11,7 +11,7 @@
 
             <ul class="navbar-nav mx-4">
                 <li class="nav-item">
-                    <a href="#blogs" class="nav-link">Blogs</a>
+                    <a href="/#blogs" class="nav-link">Blogs</a>
                 </li>
             </ul>
 

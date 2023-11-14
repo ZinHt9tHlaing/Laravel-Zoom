@@ -1,4 +1,4 @@
-.container {
+.container-bs {
     max-width: 500px;
     margin: auto;
 }
@@ -8,7 +8,7 @@
     margin: auto;
 }
 
-.bg-green{
+.bg-green {
     background-color: lightgreen;
     margin: 20px;
     padding: 20px;

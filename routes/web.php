@@ -1,35 +1,18 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    // conditional query
-    $blogQuery = Blog::with('category','author')->latest();
-    if (request('search')) {
-        $blogQuery->where('title', 'like', '%' . request('search') . '%');
-    }
-    return view('blogs', [
-        // 'blogs' => Blog::all()
-        'blogs' => $blogQuery->get(),
-    ]);
-});
+Route::get('/', [BlogController::class, 'index']);
 
-Route::get('/blogs/{blog:slug}', function (Blog $blog) {
-    return view('blog', [
-        'blog' => $blog,
-        'randomBlogs' => Blog::inRandomOrder()->take(5)->get()
-    ]);
-});
+Route::get('/blogs/{blog:slug}', [BlogController::class, 'show']);
 
-// Route::get('/blogs/{blog:slug}', function (Blog $blog) {
-//     return view('/blog-detail', [
-//         'blog' => $blog,
-//     ]);
-// });
+
+// Route::get('/blogs/{blog:slug}');
 
 // all products
 Route::get('/products', function () {
@@ -42,13 +25,14 @@ Route::get('/products/{product}', function (Product $product) {
 });
 
 Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('blogs', [
-        'blogs' => $category->blogs->load('category','author')
+    return view('blogs.index', [
+        'blogs' => $category->blogs()->with('category', 'author')->paginate(),
+        'categories' => Category::all()
     ]);
 });
 
 Route::get('/users/{user:username}', function (User $user) {
-    return view('blogs', [
-        'blogs' => $user->blogs->load('category','author')
+    return view('blogs.index', [
+        'blogs' => $user->blogs->load('category', 'author')
     ]);
 });
