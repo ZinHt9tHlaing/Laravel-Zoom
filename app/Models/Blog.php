@@ -20,9 +20,24 @@ class Blog extends Model
         return $this->belongsTo(Category::class, 'cat_id');
     }
 
-    public function scopeFilter($query,$searchValue){
-        if ($searchValue) {
-            $query->where('title', 'like', '%' . $searchValue . '%');
+    public function scopeFilter($query, $filters)
+    {
+        if ($filters['search'] ?? null) {
+            $query->where(function ($query) use ($filters) {
+                $query->where('title', 'like', '%' . $filters['search'] . '%')
+                    ->orWhere('body', 'like', '%' . $filters['search'] . '%');
+            });
+        }
+        if ($filters['category'] ?? null) {
+            $query->whereHas('category', function ($cateQuery) use ($filters) {
+                $cateQuery->where('slug', $filters['category']);
+            });
+        }
+
+        if ($filters['author'] ?? null) {
+            $query->whereHas('author', function ($userQuery) use ($filters) {
+                $userQuery->where('username', $filters['author']);
+            });
         }
     }
 

@@ -11,15 +11,16 @@ class BlogController extends Controller
 {
     public function index()
     {
+        $filters = request(['category', 'search','author']);
         // conditional query
         // $blogQuery = Blog::with('category', 'author')->filter(request('search'))->latest();
 
         return view('blogs.index', [
             'blogs' => Blog::with('category', 'author')
-            ->filter(request('search'))
-            ->latest()
-            ->paginate(3)
-            ->withQueryString(),
+                ->filter($filters)
+                ->latest()
+                ->paginate(3)
+                ->withQueryString(),
         ]);
     }
 
