@@ -5,19 +5,19 @@
 
             <ul class="navbar-nav mx-4">
                 <li class="nav-item">
-                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/" class="nav-link active  text-primary">Home</a>
                 </li>
             </ul>
 
             <ul class="navbar-nav mx-4">
                 <li class="nav-item">
-                    <a href="/#blogs" class="nav-link">Blogs</a>
+                    <a href="/#blogs" class="nav-link  text-primary">Blogs</a>
                 </li>
             </ul>
 
             <ul class="navbar-nav mx-4">
                 <li class="nav-item">
-                    <a href="#subscribe" class="nav-link">Subscribe</a>
+                    <a href="/register" class="nav-link  text-primary">Subscribe</a>
                 </li>
             </ul>
         </div>

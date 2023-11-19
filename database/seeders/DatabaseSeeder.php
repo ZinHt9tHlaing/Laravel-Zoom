@@ -27,10 +27,10 @@ class DatabaseSeeder extends Seeder
         //     ->create(); // -> categories 60
         // Product::factory(20)->create();
 
-        $frontend = Category::factory()->create(['name'=>'frontend','slug'=>'frontend']);
-        $backend = Category::factory()->create(['name'=>'backend','slug'=>'backend']);
+        $frontend = Category::factory()->create(['name' => 'frontend', 'slug' => 'frontend']);
+        $backend = Category::factory()->create(['name' => 'backend', 'slug' => 'backend']);
 
-        Blog::factory(10)->create(["cat_id"=>$frontend->id]);
-        Blog::factory(10)->create(["cat_id"=>$backend->id]);
+        Blog::factory(10)->create(['cat_id' => $frontend->id]);
+        Blog::factory(10)->create(['cat_id' => $backend->id]);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,7 @@ Route::get('/products/{product}', function (Product $product) {
 //         'blogs' => $user->blogs()->with('category', 'author')->paginate()
 //     ]);
 // });
+
+
+Route::get('/register',[RegisterController::class,'create']);
+Route::post('/register',[RegisterController::class,'store']);

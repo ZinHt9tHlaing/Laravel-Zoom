@@ -1,6 +1,5 @@
 <x-layout>
     <x-category />
-    <x-author />
     <div class="container">
 
         <div class="mb-5 w-25 m-auto">
