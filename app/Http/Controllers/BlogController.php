@@ -11,7 +11,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $filters = request(['category', 'search','author']);
+        $filters = request(['category', 'search', 'author']);
         // conditional query
         // $blogQuery = Blog::with('category', 'author')->filter(request('search'))->latest();
 

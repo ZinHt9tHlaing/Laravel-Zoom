@@ -15,11 +15,25 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav mx-4">
-                <li class="nav-item">
-                    <a href="/register" class="nav-link  text-primary">Subscribe</a>
-                </li>
-            </ul>
+            @if (auth()->check())
+                <form action="/logout" method="POST">
+                    @csrf
+                    <div class="mx-4">
+                        <button class="btn btn-danger">Logout</button>
+                    </div>
+                </form>
+            @else
+                <ul class="navbar-nav mx-4">
+                    <li class="nav-item">
+                        <a href="/login" class="btn btn-primary rounded-pill text-white">Log In</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mx-4">
+                    <li class="nav-item">
+                        <a href="/register" class="btn btn-secondary text-white">Register</a>
+                    </li>
+                </ul>
+            @endif
+            < </div>
         </div>
-    </div>
 </nav>

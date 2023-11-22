@@ -15,6 +15,13 @@
     <!-- navbar -->
     <x-navbar />
 
+    @if (session()->has('message'))
+        <div class="alert alert-secondary" role="alert">
+            {{ session()->get('message') }}
+        </div>
+    @endif
+
+
     {{ $slot }}
 
     <!-- footer -->
